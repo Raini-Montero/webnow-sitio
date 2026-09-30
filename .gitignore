@@ -5,3 +5,6 @@ server/data
 
 # Configuración local de Claude Code (no compartir)
 .claude/settings.local.json
+
+# Paquete para subir a cPanel (se genera con npm run deploy:zip)
+webnow-deploy.zip
