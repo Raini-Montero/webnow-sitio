@@ -1,0 +1,142 @@
+@import "./theme.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  html {
+    scroll-padding-top: 5rem; /* compensa el header fijo al saltar a #anclas */
+  }
+  body {
+    @apply bg-surface text-on-surface font-body-md text-body-md antialiased;
+    overscroll-behavior: none;
+  }
+  ::selection {
+    @apply bg-primary-container text-on-primary-container;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply max-w-[1280px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin;
+  }
+  .eyebrow {
+    @apply font-label-sm text-label-sm uppercase tracking-widest font-bold;
+  }
+  /* Borde sutil para tarjetas blancas sobre fondo blanco (solo tema claro) */
+  .card-edge {
+    @apply ring-1 ring-inset ring-outline-variant/80 dark:ring-0;
+  }
+  .field {
+    @apply w-full px-4 py-3 rounded-lg border border-outline-variant dark:border-transparent bg-surface-container-lowest text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary font-body-sm text-body-sm transition-all;
+  }
+}
+
+/* ---------- Fondo animado (src/components/AnimatedBackdrop.jsx) ---------- */
+.fx-backdrop {
+  --mx: 70%;
+  --my: 45%;
+  --spot: 0;
+}
+/* Grilla tenue, visible solo alrededor del cursor */
+.fx-grid {
+  background-image:
+    linear-gradient(rgb(var(--c-on-surface) / 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--c-on-surface) / 0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(380px circle at var(--mx) var(--my), #000, transparent 70%);
+  mask-image: radial-gradient(380px circle at var(--mx) var(--my), #000, transparent 70%);
+}
+/* Brillo que sigue al cursor */
+.fx-spot {
+  background: radial-gradient(520px circle at var(--mx) var(--my), rgb(var(--c-primary-container) / 0.22), transparent 65%);
+  opacity: var(--spot);
+  transition: opacity 0.5s ease;
+}
+
+/* ---------- Ilustración del hero (src/components/Hero.jsx) ---------- */
+/* Inclinación 3D */
+.hero-tilt {
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+/* ---------- Maquetado animado de la banda "a medida" (src/components/CtaBand.jsx) ---------- */
+/* Cada bloque aparece en secuencia (según --d), se mantiene y se desvanece: el sitio "se arma" en bucle */
+@keyframes wf-build {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.97);
+  }
+  10%,
+  85% {
+    opacity: 1;
+    transform: none;
+  }
+  95%,
+  100% {
+    opacity: 0;
+    transform: none;
+  }
+}
+.wf-build {
+  transform-box: fill-box; /* para que también escale bien dentro de un SVG */
+  transform-origin: center;
+  animation: wf-build 7s ease-out infinite both;
+  animation-delay: var(--d, 0s);
+}
+@media (prefers-reduced-motion: reduce) {
+  .wf-build {
+    animation: none;
+  }
+}
+
+/* ---------- Franja de logos (src/components/ClientLogos.jsx) ---------- */
+@keyframes logo-marquee {
+  to { transform: translateX(-100%); }
+}
+.logo-marquee-track {
+  animation: logo-marquee 35s linear infinite;
+}
+.logo-marquee:hover .logo-marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee {
+    flex-wrap: wrap;
+    justify-content: center;
+    mask-image: none;
+  }
+  .logo-marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-right: 0;
+    row-gap: 1.5rem;
+  }
+  .logo-marquee-track[aria-hidden] {
+    display: none;
+  }
+}
+
+/* ---------- Visor de imágenes (src/components/Lightbox.jsx) ---------- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}

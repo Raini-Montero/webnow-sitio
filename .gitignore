@@ -1,0 +1,7 @@
+node_modules
+dist
+.env
+server/data
+
+# Configuración local de Claude Code (no compartir)
+.claude/settings.local.json

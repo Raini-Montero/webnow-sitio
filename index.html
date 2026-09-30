@@ -1,0 +1,80 @@
+<!doctype html>
+<html class="scroll-smooth" lang="es">
+  <head>
+    <script>
+      // Aplica el tema guardado antes de pintar la página (claro por defecto)
+      try { if (localStorage.getItem("tema") === "oscuro") document.documentElement.classList.add("dark") } catch (e) {}
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>webnow | Desarrollo web, tiendas online y marketing digital en Chile</title>
+    <meta name="description" content="Creamos tu sitio web, tienda online y estrategia de marketing digital. Agencia en Santiago de Chile con +10 años de experiencia. Reunión gratuita y propuesta en 48 horas." />
+    <link rel="canonical" href="https://webnow.cl/" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <meta name="theme-color" content="#7b42f5" />
+
+    <!-- Vista previa al compartir el enlace (WhatsApp, Facebook, LinkedIn, X) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="webnow" />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:url" content="https://webnow.cl/" />
+    <meta property="og:title" content="webnow | Creamos tu sitio web ahora" />
+    <meta property="og:description" content="Desarrollo web, tiendas online y marketing digital en Chile. Reunión gratuita de 30 minutos y propuesta en 48 horas." />
+    <meta property="og:image" content="https://webnow.cl/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="webnow: Creamos tu sitio web ahora" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="webnow | Creamos tu sitio web ahora" />
+    <meta name="twitter:description" content="Desarrollo web, tiendas online y marketing digital en Chile." />
+    <meta name="twitter:image" content="https://webnow.cl/og-image.png" />
+
+    <!-- Datos del negocio para Google (negocio local) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "@id": "https://webnow.cl/#negocio",
+        "name": "webnow",
+        "legalName": "webnow SpA",
+        "url": "https://webnow.cl/",
+        "logo": "https://webnow.cl/favicon.png",
+        "image": "https://webnow.cl/og-image.png",
+        "description": "Agencia de desarrollo web, tiendas online y marketing digital en Santiago de Chile.",
+        "telephone": "+56933518613",
+        "email": "contacto@webnow.cl",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Vicuña Mackenna Poniente 6843, Of. 206",
+          "addressLocality": "La Florida",
+          "addressRegion": "Región Metropolitana",
+          "addressCountry": "CL"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "19:00"
+          }
+        ],
+        "areaServed": { "@type": "Country", "name": "Chile" },
+        "priceRange": "$$",
+        "sameAs": [
+          "https://www.linkedin.com/company/webnowchile",
+          "https://www.facebook.com/webnowchile",
+          "https://www.instagram.com/webnowchile/"
+        ]
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

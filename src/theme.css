@@ -1,0 +1,62 @@
+/* Paletas del sitio (canales RGB para que funcionen las opacidades de Tailwind, p. ej. bg-primary/20).
+   :root = tema claro · .dark y .band = morado profundo (tema oscuro y franjas del tema claro) */
+
+:root {
+  --c-surface: 255 255 255; /* #ffffff */
+  --c-surface-dim: 244 241 251; /* #f4f1fb */
+  --c-surface-bright: 255 255 255; /* #ffffff */
+  --c-surface-container-lowest: 247 245 253; /* #f7f5fd */
+  --c-surface-container-low: 255 255 255; /* #ffffff */
+  --c-surface-container: 255 255 255; /* #ffffff */
+  --c-surface-container-high: 241 236 254; /* #f1ecfe */
+  --c-surface-container-highest: 230 221 253; /* #e6ddfd */
+  --c-surface-variant: 236 230 253; /* #ece6fd */
+  --c-surface-tint: 95 39 214; /* #5f27d6 */
+  --c-on-surface: 28 22 51; /* #1c1633 */
+  --c-on-surface-variant: 93 87 117; /* #5d5775 */
+  --c-outline: 139 134 160; /* #8b86a0 */
+  --c-outline-variant: 221 215 238; /* #ddd7ee */
+  --c-primary: 106 47 230; /* #6a2fe6 */
+  --c-on-primary: 255 255 255; /* #ffffff */
+  --c-primary-container: 123 66 245; /* #7b42f5 */
+  --c-on-primary-container: 255 255 255; /* #ffffff */
+  --c-inverse-primary: 106 47 230; /* #6a2fe6 */
+  --c-secondary: 14 143 176; /* #0e8fb0 */
+  --c-secondary-container: 18 181 214; /* #12b5d6 */
+  --c-tertiary: 232 98 12; /* #e8620c */
+  --c-tertiary-container: 255 138 31; /* #ff8a1f */
+  --c-tertiary-fixed-dim: 255 138 31; /* #ff8a1f */
+  --c-error: 217 45 32; /* #d92d20 */
+  --c-error-container: 253 226 223; /* #fde2df */
+}
+
+/* Morado profundo: todo el tema oscuro y las franjas (hero, banda CTA, marketing) del tema claro */
+.dark,
+html:not(.dark) .band {
+  --c-surface: 31 15 77; /* #1f0f4d */
+  --c-surface-dim: 31 15 77; /* #1f0f4d */
+  --c-surface-bright: 58 35 131; /* #3a2383 */
+  --c-surface-container-lowest: 25 11 64; /* #190b40 */
+  --c-surface-container-low: 38 20 90; /* #26145a */
+  --c-surface-container: 44 24 102; /* #2c1866 */
+  --c-surface-container-high: 55 32 118; /* #372076 */
+  --c-surface-container-highest: 67 42 136; /* #432a88 */
+  --c-surface-variant: 67 42 136; /* #432a88 */
+  --c-surface-tint: 201 181 255; /* #c9b5ff */
+  --c-on-surface: 245 241 255; /* #f5f1ff */
+  --c-on-surface-variant: 212 202 247; /* #d4caf7 */
+  --c-outline: 165 151 214; /* #a597d6 */
+  --c-outline-variant: 77 55 145; /* #4d3791 */
+  --c-primary: 201 181 255; /* #c9b5ff */
+  --c-on-primary: 42 13 115; /* #2a0d73 */
+  --c-primary-container: 123 66 245; /* #7b42f5 */
+  --c-on-primary-container: 255 255 255; /* #ffffff */
+  --c-inverse-primary: 91 33 214; /* #5b21d6 */
+  --c-secondary: 127 227 247; /* #7fe3f7 */
+  --c-secondary-container: 157 107 255; /* #9d6bff */
+  --c-tertiary: 255 178 122; /* #ffb27a */
+  --c-tertiary-container: 255 138 31; /* #ff8a1f */
+  --c-tertiary-fixed-dim: 255 178 122; /* #ffb27a */
+  --c-error: 255 180 171; /* #ffb4ab */
+  --c-error-container: 147 0 10; /* #93000a */
+}
