@@ -33,13 +33,18 @@ Todo el contenido y la comunicación con la dueña del proyecto es en **español
 - **Carruseles en móvil** (proceso y proyectos): hook compartido `src/lib/useCarousel.js` (arrastre + avance automático).
 - **Capturas que se deslizan al hover** (sitios web y feeds): componente `ScrollingShot` en `Portfolio.jsx`.
 - Accesibilidad: respetar `prefers-reduced-motion` en toda animación nueva.
+- **Google Tag Manager**: contenedor `GTM-TBLWRPTV` (el mismo del sitio anterior en WordPress), incrustado en `index.html`
+  (script en `<head>` + `noscript` al inicio de `<body>`). No quitarlo. Eventos de conversión en `src/lib/analytics.js`:
+  `generate_lead` (formulario enviado, con `servicio`), `whatsapp_click`, `phone_click`, `email_click` (con `ubicacion`).
+- **Puertos en desarrollo**: la API usa `--port=3001` (en los scripts de `package.json`) para no chocar con el `PORT`
+  que definen otras herramientas; en producción usa la variable `PORT` del hosting y sirve `dist/` + `/api` juntos.
 
 ## Pendientes conocidos
 
 - Formulario: hoy guarda los mensajes en `server/data/leads.jsonl`; falta configurar el envío por correo (variables `SMTP_*` en `.env`, ver `.env.example`).
 - Preguntas frecuentes: confirmar la respuesta de **formas de pago** (marcada `CONFIRMAR` en `site.js`).
 - Política de privacidad (el formulario recoge datos personales).
-- Medición: Google Analytics 4 / Pixel de Meta.
+- Medición: GTM ya envía los eventos; falta configurar en GTM las etiquetas (GA4, Ads, Pixel de Meta) que los usen.
 
 ## Al hacer cambios
 

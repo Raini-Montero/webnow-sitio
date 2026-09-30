@@ -16,7 +16,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const DATA_DIR = path.join(__dirname, 'data')
 const LEADS_FILE = path.join(DATA_DIR, 'leads.jsonl')
 const DIST_DIR = path.join(__dirname, '..', 'dist')
-const PORT = Number(process.env.PORT) || 3001
+// En desarrollo el puerto se fija con --port=3001 (así no choca con el PORT que otras herramientas definen para Vite).
+// En producción (cPanel/Passenger) se usa la variable PORT que asigna el hosting.
+const portArg = process.argv.find((a) => a.startsWith('--port='))
+const PORT = Number(portArg?.split('=')[1]) || Number(process.env.PORT) || 3001
 
 const mailer = process.env.SMTP_HOST
   ? nodemailer.createTransport({

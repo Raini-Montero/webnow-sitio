@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Icon from './Icon.jsx'
 import { serviceOptions } from '../data/site.js'
 import { validateContact, LIMITS } from '../lib/validateContact.js'
+import { track } from '../lib/analytics.js'
 
 const empty = { nombre: '', apellido: '', correo: '', telefono: '', mensaje: '', website: '' }
 
@@ -60,6 +61,7 @@ export default function ContactForm({ selectedService, onServiceChange }) {
         throw new Error(body.message || 'No pudimos enviar tu mensaje.')
       }
       setStatus('success')
+      track('generate_lead', { servicio: data.servicio || 'Sin especificar' })
       setValues(empty)
       onServiceChange('')
     } catch (err) {

@@ -4,9 +4,9 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently -k -n web,api -c cyan,magenta \"vite\" \"node --watch server/index.js\"",
+    "dev": "concurrently -k -n web,api -c cyan,magenta \"vite\" \"node --watch server/index.js --port=3001\"",
     "dev:web": "vite",
-    "dev:api": "node --watch server/index.js",
+    "dev:api": "node --watch server/index.js --port=3001",
     "build": "vite build",
     "preview": "vite preview",
     "start": "node server/index.js"
