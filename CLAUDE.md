@@ -46,6 +46,17 @@ Todo el contenido y la comunicación con la dueña del proyecto es en **español
 - Política de privacidad (el formulario recoge datos personales).
 - Medición: GTM ya envía los eventos; falta configurar en GTM las etiquetas (GA4, Ads, Pixel de Meta) que los usen.
 
+## Publicación (producción)
+
+- En línea en **https://webnow.cl** (reemplazó al WordPress anterior, respaldado en `~/wordpress-respaldo` del hosting).
+- Hosting con cPanel → **Setup Node.js App**: Node 22.23.3, modo Production, raíz `webnow-sitio` (en el home, fuera de
+  `public_html`), URL `webnow.cl`, archivo de inicio `app.cjs`.
+- Para publicar un cambio: `npm run deploy:zip` genera `webnow-deploy.zip`; se sube a `webnow-sitio` en el Administrador
+  de archivos, se extrae reemplazando, se borra el zip y se presiona "Reiniciar" en la app (y "Run NPM Install" solo si
+  cambiaron las dependencias).
+- Aviso conocido de cPanel al hacer "Run NPM Install": "check availability of application has failed… content type
+  text/html vs text/html; charset=utf-8". Es una falsa alarma; la instalación sí se completa.
+
 ## Al hacer cambios
 
 1. Editar y revisar en `npm run dev` (probar escritorio y móvil, tema claro y oscuro).
