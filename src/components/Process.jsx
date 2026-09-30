@@ -12,6 +12,7 @@ export default function Process() {
     <section id="proceso" className="w-full py-20 bg-surface dark:bg-transparent">
       <div className="container-page flex flex-col gap-12">
         <SectionHeading
+          wide
           eyebrow="¿Y cómo seguimos?"
           title="Así llevamos tu proyecto a la realidad"
           text="Un proceso claro, con tiempos comprometidos desde el primer contacto."
@@ -68,9 +69,7 @@ export default function Process() {
               <Icon name="chat" className="text-lg text-emerald-600" />
               Escríbenos por WhatsApp
             </a>
-          </div>
-          <p className="font-body-sm text-body-sm text-on-surface-variant">Sin compromiso · Te respondemos en el día</p>
-        </div>
+          </div>        </div>
       </div>
     </section>
   )
