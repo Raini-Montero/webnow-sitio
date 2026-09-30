@@ -112,4 +112,9 @@ if (existsSync(DIST_DIR)) {
 
 app.listen(PORT, () => {
   console.log(`API de contacto en http://localhost:${PORT} (correo ${mailer ? 'activado' : 'desactivado: solo se guarda en server/data/leads.jsonl'})`)
+  // Comprueba la conexión con el servidor de correo al iniciar, para detectar datos SMTP mal escritos
+  mailer
+    ?.verify()
+    .then(() => console.log(`[correo] Conexión SMTP correcta con ${process.env.SMTP_HOST}; los mensajes se enviarán a ${process.env.CONTACT_TO}`))
+    .catch((err) => console.error(`[correo] No se pudo conectar al SMTP (${process.env.SMTP_HOST}:${process.env.SMTP_PORT}): ${err.message}`))
 })
