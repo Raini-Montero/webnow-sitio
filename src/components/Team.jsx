@@ -1,3 +1,4 @@
+import useCarousel from '../lib/useCarousel.js'
 import { team } from '../data/site.js'
 
 function LinkedInIcon({ className }) {
@@ -8,7 +9,9 @@ function LinkedInIcon({ className }) {
   )
 }
 
+// En móvil el equipo es un carrusel que avanza solo y se arrastra; desde tablet, una grilla
 export default function Team() {
+  const { trackRef, trackProps } = useCarousel()
   return (
     <section className="w-full py-20 bg-surface dark:bg-transparent" id="equipo">
       <div className="container-page flex flex-col gap-12">
@@ -16,11 +19,17 @@ export default function Team() {
           +10 años de experiencia y profesionalismo
         </h2>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <ul
+          ref={trackRef}
+          {...trackProps}
+          aria-label="Equipo"
+          className="-mx-margin-mobile flex snap-x snap-mandatory gap-4 overflow-x-auto px-margin-mobile py-3 scroll-px-margin-mobile cursor-grab active:cursor-grabbing select-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden
+            md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:py-0 md:cursor-auto md:select-auto lg:grid-cols-4"
+        >
           {team.map((m) => (
             <li
               key={m.name}
-              className="card-edge group flex flex-col rounded-2xl overflow-hidden bg-surface-container hover:bg-surface-container-high transition-all duration-300 hover:-translate-y-2 shadow-md"
+              className="card-edge group flex w-[82%] shrink-0 snap-center md:w-auto flex-col rounded-2xl overflow-hidden bg-surface-container hover:bg-surface-container-high transition-all duration-300 md:hover:-translate-y-2 shadow-md"
             >
               <div className="overflow-hidden">
                 <img
@@ -29,6 +38,7 @@ export default function Team() {
                   width="370"
                   height="441"
                   loading="lazy"
+                  draggable="false"
                   className="w-full aspect-[370/441] object-cover bg-surface-container-high group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
