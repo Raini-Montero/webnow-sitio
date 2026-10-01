@@ -1,9 +1,14 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // Tema claro (por defecto) u oscuro. Se guarda en localStorage y se aplica con la clase "dark" en <html>.
 // El tema inicial lo pone un script en index.html para evitar un parpadeo al cargar.
+// El estado parte en "claro" (así coincide con el HTML prerenderizado) y se sincroniza al montar.
 export default function useTheme() {
-  const [dark, setDark] = useState(() => document.documentElement.classList.contains('dark'))
+  const [dark, setDark] = useState(false)
+
+  useEffect(() => {
+    setDark(document.documentElement.classList.contains('dark'))
+  }, [])
 
   function toggle() {
     const next = !dark

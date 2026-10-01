@@ -8,3 +8,4 @@ server/data
 
 # Paquete para subir a cPanel (se genera con npm run deploy:zip)
 webnow-deploy.zip
+dist-ssr

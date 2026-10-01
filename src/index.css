@@ -137,6 +137,29 @@
   to { opacity: 1; transform: none; }
 }
 
+/* ---------- Íconos (Material Symbols) ---------- */
+/* Fuente recortada con SOLO los íconos que usa el sitio (≈5 KB en vez de 1,1 MB), servida desde public/fonts.
+   Si se agrega un ícono nuevo hay que regenerarla incluyendo su nombre (ver CLAUDE.md). */
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('/fonts/material-symbols-subset.woff2') format('woff2');
+}
 .material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
 }

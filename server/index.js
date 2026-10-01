@@ -5,6 +5,7 @@
 // En producción (tras `npm run build`) también sirve el sitio compilado desde /dist.
 import 'dotenv/config'
 import express from 'express'
+import compression from 'compression'
 import nodemailer from 'nodemailer'
 import { appendFile, mkdir } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
@@ -43,6 +44,8 @@ function rateLimited(ip) {
 }
 
 const app = express()
+// Comprime HTML, JS, CSS y JSON (los videos e imágenes ya vienen comprimidos y se omiten solos)
+app.use(compression())
 app.use(express.json({ limit: '20kb' }))
 
 app.post('/api/contact', async (req, res) => {
@@ -105,9 +108,27 @@ app.post('/api/contact', async (req, res) => {
 })
 
 // Sitio compilado (solo si existe /dist)
+// Caché del navegador:
+//  - /assets/* (JS y CSS con huella en el nombre, cambian de nombre en cada versión): 1 año, inmutable
+//  - imágenes, videos y fuentes: 7 días
+//  - HTML: siempre se revalida, para que los cambios se vean apenas se publican
+const ONE_YEAR = 365 * 24 * 60 * 60
+const ONE_WEEK = 7 * 24 * 60 * 60
 if (existsSync(DIST_DIR)) {
-  app.use(express.static(DIST_DIR))
-  app.get(/^(?!\/api).*/, (_req, res) => res.sendFile(path.join(DIST_DIR, 'index.html')))
+  app.use(
+    express.static(DIST_DIR, {
+      setHeaders(res, filePath) {
+        const rel = path.relative(DIST_DIR, filePath).replaceAll('\\', '/')
+        if (rel.startsWith('assets/')) res.setHeader('Cache-Control', `public, max-age=${ONE_YEAR}, immutable`)
+        else if (/\.(webp|png|jpe?g|svg|mp4|woff2?)$/i.test(rel)) res.setHeader('Cache-Control', `public, max-age=${ONE_WEEK}`)
+        else res.setHeader('Cache-Control', 'no-cache')
+      },
+    }),
+  )
+  app.get(/^(?!\/api).*/, (_req, res) => {
+    res.setHeader('Cache-Control', 'no-cache')
+    res.sendFile(path.join(DIST_DIR, 'index.html'))
+  })
 }
 
 app.listen(PORT, () => {

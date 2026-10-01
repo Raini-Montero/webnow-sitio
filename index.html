@@ -1,18 +1,28 @@
 <!doctype html>
 <html class="scroll-smooth" lang="es">
   <head>
-    <!-- Google Tag Manager (contenedor GTM-TBLWRPTV, el mismo del sitio anterior) -->
+    <!-- Google Tag Manager (contenedor GTM-TBLWRPTV, el mismo del sitio anterior).
+         Se carga cuando la página ya terminó de mostrarse (evento load + momento libre del navegador) para no
+         competir con la carga inicial; el dataLayer existe desde el inicio, así que ningún evento se pierde. -->
     <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || []
-        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != 'dataLayer' ? '&l=' + l : ''
-        j.async = true
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl
-        f.parentNode.insertBefore(j, f)
-      })(window, document, 'script', 'dataLayer', 'GTM-TBLWRPTV')
+      window.dataLayer = window.dataLayer || []
+      ;(function (w, d, i) {
+        function loadGtm() {
+          if (w.__gtmLoaded) return
+          w.__gtmLoaded = true
+          w.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
+          var j = d.createElement('script')
+          j.async = true
+          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i
+          d.head.appendChild(j)
+        }
+        function schedule() {
+          if ('requestIdleCallback' in w) w.requestIdleCallback(loadGtm, { timeout: 2000 })
+          else setTimeout(loadGtm, 1)
+        }
+        if (d.readyState === 'complete') schedule()
+        else w.addEventListener('load', schedule)
+      })(window, document, 'GTM-TBLWRPTV')
     </script>
     <!-- Fin Google Tag Manager -->
     <script>
@@ -82,10 +92,8 @@
         ]
       }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <!-- Las fuentes se sirven desde el propio sitio (ver src/main.jsx y src/index.css); los íconos se precargan -->
+    <link rel="preload" href="/fonts/material-symbols-subset.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->

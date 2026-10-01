@@ -9,7 +9,7 @@ const ZIP = 'webnow-deploy.zip'
 const FILES = ['server/index.js', 'src/lib/validateContact.js', 'app.cjs', 'package.json', 'package-lock.json']
 
 console.log('1/2 Compilando el sitio…')
-execSync('npx vite build', { stdio: 'inherit' })
+execSync('npm run build', { stdio: 'inherit' })
 
 console.log('2/2 Empaquetando…')
 if (existsSync(ZIP)) rmSync(ZIP)
