@@ -37,7 +37,7 @@ export const plans = [
     name: 'One Page Básica',
     description: 'Página única para presentar tu negocio de forma impactante',
     price: '$149.990',
-    delivery: '3 a 5 días hábiles',
+    delivery: '2 días hábiles',
     features: [
       'Hosting y dominio (1 año)',
       'Cuentas de correo ilimitadas',
@@ -157,7 +157,7 @@ export const socialPosts = [
 export const faqs = [
   {
     q: '¿Cuánto tiempo demora el desarrollo de mi sitio?',
-    a: 'Depende del plan: una One Page Básica está lista en 3 a 5 días hábiles, un Sitio Esencial en 10 a 15 y un Ecommerce en 15 a 30 días hábiles. Los plazos corren desde que tenemos el contenido (textos, logo e imágenes).',
+    a: 'Depende del plan: una One Page Básica está lista en 2 días hábiles, un Sitio Esencial en 10 a 15 y un Ecommerce en 15 a 30 días hábiles. Los plazos corren desde que tenemos el contenido (textos, logo e imágenes).',
   },
   {
     q: '¿Qué incluye el precio? ¿Hay costos ocultos?',
@@ -231,7 +231,7 @@ export const methodology = [
   },
   {
     title: 'Creamos tu sitio',
-    badge: '3 a 30 días hábiles',
+    badge: '2 a 30 días hábiles',
     icon: 'code_blocks',
     color: 'from-[#22c55e] to-[#15803d] shadow-[#16a34a]/35',
     text: 'Desarrollamos tu web con rondas de revisión incluidas. Los plazos dependen del plan que elijas.',
