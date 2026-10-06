@@ -44,7 +44,7 @@ export const plans = [
       'Página única informativa',
       'Diseño personalizado',
       'Adaptado a móviles',
-      { text: 'No autoadministrable', excluded: true },
+      'Panel de administración',
       '4 secciones de contenido',
       'Formulario de contacto',
       'Botón de WhatsApp',
@@ -161,7 +161,7 @@ export const faqs = [
   },
   {
     q: '¿Qué incluye el precio? ¿Hay costos ocultos?',
-    a: 'No hay costos ocultos. Todos los precios son pago único e incluyen IVA. Cada plan incluye hosting y dominio por 1 año, cuentas de correo ilimitadas, certificado SSL y diseño personalizado adaptado a móviles. El Sitio Esencial y el Ecommerce incluyen además panel de administración.',
+    a: 'No hay costos ocultos. Todos los precios son pago único e incluyen IVA. Cada plan incluye hosting y dominio por 1 año, cuentas de correo ilimitadas, certificado SSL, diseño personalizado adaptado a móviles y panel de administración.',
   },
   {
     q: '¿Qué pasa después del primer año?',
@@ -169,7 +169,7 @@ export const faqs = [
   },
   {
     q: '¿Podré editar mi sitio yo mismo?',
-    a: 'En el Sitio Esencial y el Ecommerce, sí: incluyen un panel de administración para que actualices textos, imágenes, productos o precios sin depender de nosotros. La One Page Básica no es autoadministrable, así que los cambios se nos solicitan a nosotros. Si prefieres no preocuparte, también podemos encargarnos de la administración como servicio adicional.',
+    a: 'Sí. Todos los planes incluyen un panel de administración para que actualices textos, imágenes, productos o precios sin depender de nosotros. Si prefieres no preocuparte, también podemos encargarnos de la administración como servicio adicional.',
   },
   {
     q: '¿Qué necesito para empezar?',
