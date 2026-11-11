@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Icon from './Icon.jsx'
 import SectionHeading from './SectionHeading.jsx'
-import { plans } from '../data/site.js'
+import { SHOW_PRICES, plans } from '../data/site.js'
 
 // Ítems visibles antes de "Ver todo lo que incluye"
 const VISIBLE_FEATURES = 6
@@ -37,13 +37,15 @@ function PlanCard({ plan, onSelect }) {
             {plan.delivery}
           </span>
         </div>
-        <div className="py-2">
-          <div className="flex items-baseline gap-1 flex-wrap">
-            {plan.fromPrice && <span className="font-label-md text-label-md text-secondary font-bold">Desde</span>}
-            <span className="font-display-mobile text-display-mobile font-extrabold text-on-surface">{plan.price}</span>
+        {SHOW_PRICES && (
+          <div className="py-2">
+            <div className="flex items-baseline gap-1 flex-wrap">
+              {plan.fromPrice && <span className="font-label-md text-label-md text-secondary font-bold">Desde</span>}
+              <span className="font-display-mobile text-display-mobile font-extrabold text-on-surface">{plan.price}</span>
+            </div>
+            <p className={`font-label-sm text-label-sm mt-0.5 ${featured ? 'text-primary' : 'text-outline'}`}>CLP · IVA incluido · pago único</p>
           </div>
-          <p className={`font-label-sm text-label-sm mt-0.5 ${featured ? 'text-primary' : 'text-outline'}`}>CLP · IVA incluido · pago único</p>
-        </div>
+        )}
         <ul className={`flex flex-col gap-3 font-body-sm text-body-sm ${featured ? 'text-on-surface' : 'text-on-surface-variant'}`}>
           {(expanded ? plan.features : plan.features.slice(0, VISIBLE_FEATURES)).map((f) => {
             // Un ítem puede ser texto o { text, excluded } para lo que el plan NO incluye

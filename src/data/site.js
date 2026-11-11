@@ -29,6 +29,10 @@ export const navLinks = [
   { id: 'contactar', label: 'Contactar' },
 ]
 
+// Mostrar u ocultar los precios de los planes (en las tarjetas y en el selector del formulario).
+// Los precios siguen guardados en `price`; para volver a mostrarlos basta con cambiar esto a true.
+export const SHOW_PRICES = false
+
 // Información oficial de los planes. En la tarjeta se muestran los primeros ítems de `features`
 // y el resto aparece con "Ver todo lo que incluye".
 // Un ítem puede ser texto o { text, excluded: true } para indicar algo que el plan NO incluye.
@@ -107,7 +111,7 @@ export const plans = [
 // Opciones del selector "Servicio de interés" del formulario (opcional). "Desarrollo web a medida" va primero.
 export const serviceOptions = [
   { value: 'Desarrollo web a medida', label: 'Desarrollo web a medida' },
-  ...plans.map((p) => ({ value: p.name, label: `${p.name} (${p.fromPrice ? 'Desde ' : ''}${p.price})` })),
+  ...plans.map((p) => ({ value: p.name, label: SHOW_PRICES ? `${p.name} (${p.fromPrice ? 'Desde ' : ''}${p.price})` : p.name })),
   { value: 'Marketing Digital', label: 'Estrategia de Marketing Digital' },
 ]
 
