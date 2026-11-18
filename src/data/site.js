@@ -31,7 +31,7 @@ export const navLinks = [
 
 // Mostrar u ocultar los precios de los planes (en las tarjetas y en el selector del formulario).
 // Los precios siguen guardados en `price`; para volver a mostrarlos basta con cambiar esto a true.
-export const SHOW_PRICES = false
+export const SHOW_PRICES = true
 
 // Información oficial de los planes. En la tarjeta se muestran los primeros ítems de `features`
 // y el resto aparece con "Ver todo lo que incluye".
